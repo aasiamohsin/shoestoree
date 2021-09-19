@@ -1,38 +1,310 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #fdfdf4;
+}
+
+.navbar {
+  padding: 30px 10px;
+  transition: 0.4s;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar-right {
+  float: right;
   text-align: center;
+  margin-right: 25px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar-right a {
+  float: left;
+  margin: 100px 0;
+  padding: 0 10px;
+  font-size: 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-right a:hover {
+  color: #69096d;
+  border-bottom: 1px solid #000;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar img {
+  width: 350px;
+  margin-left: 25px;
+}
+
+.navbar.active {
+  background-image: linear-gradient(to right, #f5f6fa, #eab543);
+  transform: translateY(-160px);
+}
+
+.navbar.active img {
+  width: 170px;
+  transform: translateY(130px);
+}
+
+.navbar.active a {
+  font-size: 22px;
+  transform: translateY(85px);
+}
+
+.shoe-container ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 330px;
+  padding: 15px 15px 25px;
+  grid-gap: 5px;
+}
+
+.shoe-container li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  height: 500px;
+  background-color: #ffffff;
+  box-shadow: 0 0 3px 1px #ccc0a4 inset;
+  list-style-type: none;
+}
+
+.shoe-container div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px 70px 20px;
+}
+
+.shoe-container li:hover {
+  box-shadow: 0 0 2px 1px #000000;
+}
+
+.shoe-container img {
+  width: 350px;
+  margin-bottom: 30px;
+}
+
+.shoe-container a {
+  margin-bottom: 10px;
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.shoe {
+  grid-area: menu;
+}
+.details {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.product {
+  display: grid;
+  grid-template-areas:
+    ' menu main main main main main'
+    'menu footer footer footer footer footer';
+  grid-gap: 3px;
+  max-width: 70%;
+  margin: 350px auto;
+}
+
+.product > div {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #ffffff;
+  box-shadow: 0 0 4px 1px #ccc0a4;
+}
+
+.shoe {
+  position: relative;
+}
+
+.shoe img {
+  width: 650px;
+  margin: 50px;
+}
+
+.shoe p {
+  margin-bottom: 30px;
+}
+
+.shoe button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+.details {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 26px;
+  height: 610px;
 }
 
-.App-link {
-  color: #61dafb;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 22px;
+  height: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.footer button {
+  border: 1px solid #ecebe8;
+}
+
+.check-out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 400px auto;
+  padding-top: 15px;
+  max-width: 600px;
+  box-shadow: 0 0 2px 1px #ccc0a4;
+  background-color: #ffffff;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #ccc0a4;
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 1500px) {
+  .shoe-container ul {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 300px 80px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .shoe-container img {
+    width: 300px;
+  }
+
+  .product {
+    max-width: 70%;
+    margin: 350px auto;
+  }
+
+  .product > div {
+    font-size: 20px;
+  }
+
+  .product img {
+    margin: 100px 20px 0 20px;
+    width: 450px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .shoe-container ul {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 300px 80px;
+  }
+
+  .shoe-container img {
+    width: 240px;
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 350px auto;
+  }
+
+  .product > div {
+    width: 700px;
+    font-size: 16px;
+  }
+
+  .shoe img {
+    width: 400px;
+  }
+
+  .shoe p {
+    margin-bottom: 30px;
+  }
+
+  .details {
+    height: 250px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 10px 10px;
+  }
+
+  .navbar-right {
+    margin-right: 5px;
+  }
+
+  .navbar-right a {
+    margin: 100px 0;
+    padding: 0 5px;
+    font-size: 18px;
+  }
+
+  .navbar img {
+    width: 170px;
+    margin: 30px 10px;
+  }
+
+  .navbar.active img {
+    width: 100px;
+    margin: 20px 10px;
+  }
+
+  .navbar.active a {
+    font-size: 18px;
+  }
+
+  .shoe-container ul {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 200px 80px;
+  }
+
+  .shoe-container li {
+    height: 400px;
+  }
+
+  .shoe-container img {
+    width: 200px;
+    margin-bottom: 30px;
+  }
+
+  .product {
+    margin: 230px auto;
+  }
+
+  .product > div {
+    width: 350px;
+  }
+
+  .shoe img {
+    width: 250px;
   }
 }

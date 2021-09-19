@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ShoeState } from './Context/ShoeStore/ShoeState';
+import { NavBar } from './Components/Header/NavBar';
+import { Home } from './Components/Pages/Home';
+import { Shoes } from './Components/Shoes/Shoes';
+import { ShoeItem } from './Components/Shoes/ShoeItem';
+import { LaunchShoe } from './Components/Shoes/LaunchShoe';
+import { NotFound } from './Components/Pages/NotFound';
+import { CheckOut } from './Components/Pages/CheckOut';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ShoeState>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='ShoeItem' element={<ShoeItem />}>
+            <Route exact path='/' element={<Shoes />} />
+            <Route exact path=':id' element={<LaunchShoe />} />
+            <Route exact path=':id/CheckOut' element={<CheckOut />} />
+          </Route>
+          <Route exact path='CheckOut' element={<CheckOut />} />
+          <Route exact path='*' element={<NotFound />} />
+        </Routes>
+      </Router>
+    </ShoeState>
   );
 }
 
